@@ -1,0 +1,184 @@
+{
+    "Let":{
+        "prefix": "let",
+        "body": [
+            "let ${1:variable} := ${2:expression};"
+        ],
+        "description": "Snippet for \"let...\""
+    },
+    "Import":{
+        "prefix": "import",
+        "body": [
+            "import ${1:module}"
+        ],
+        "description": "Snippet for \"import...\""
+    },
+    "Module":{
+        "prefix": "module",
+        "body": [
+            "module ${1:name}",
+            "start",
+            "end ${1:name}."
+        ],
+        "description": "Snippet for \"module...\""
+    },
+
+    "Variable":{
+        "prefix": "variable",
+        "body": [
+            "variable ${1:type} ${2:name} := ${3:expr};"
+        ],
+        "description": "Snippet for \"variable...\""
+    },
+
+    "Const":{
+        "prefix": "const",
+        "body": [
+            "const ${1:type} ${2:name} := ${3:expr};"
+        ],
+        "description": "Snippet for \"const...\""
+    },
+
+    "While Loop":{
+        "prefix": "while",
+        "body": [
+            "while (${1:statement}) do",
+            "\t$0",
+            "end"
+        ],
+        "description": "Snippet for loop \"while...\""
+    },
+    "RepeatWhile Loop":{
+        "prefix": "repeat",
+        "body": [
+            "repeat",
+            "\t$0",
+            "while (${1:statement})"
+        ],
+        "description": "Snippet for loop \"repeat...while...\""
+    },
+    "Function":{
+        "prefix": "function",
+        "body": [
+            "${1:access_modifier} function(${2:${3:access} ${4:value_type} ${5:name_of_var}}): ${6:return_type} ${7:name}",
+            "\t$0",
+            "end"
+        ],
+        "description": "Snippet for Function"
+    },
+    "Procedure":{
+        "prefix": "procedure",
+        "body": [
+            "${1:access_modifier} procedure(${2:${3:access} ${4:value_type} ${5:name_of_var}}): ${6:name of proc}",
+            "\t$0",
+            "end"
+        ],
+        "description": "Snippet for Procedure"
+    },
+    "If-Else":{
+        "prefix": "if else",
+        "body": [
+            "if (${1:statement}) then",
+            "\t$0",
+            "else",
+            "\t$0",
+            "end"
+        ],
+        "description": "Snippet for \"if...else...\""
+    },
+    "If-ElseIf-Else":{
+        "prefix": "if elseif else",
+        "body": [
+            "if (${1:statement}) then",
+            "\t$0",
+            "else if (${2:statement}) then",
+            "\t$0",
+            "else",
+            "\t$0",
+            "end"
+        ],
+        "description": "Snippet for \"if... else if... else...\""
+    },
+    "IfOnly":{
+        "prefix": "if",
+        "body": [
+            "if (${1:statement}) then",
+            "\t$0",
+            "end"
+        ],
+        "description": "Snippet for \"if...\""
+    },
+    "Array":{
+        "prefix": "array",
+        "body": [
+            "array [${1:size}] ${2:type} ${3:name}"
+        ],
+        "description": "Snippet for Array"
+    },
+    "Class": {
+        "prefix": "class",
+        "body": [
+            "${1:access_modifier} class ${2:name}",
+            "end"
+        ],
+        "description": "Snippet for Class"
+    },
+    "Pointer":
+    {
+        "prefix": "pointer",
+        "body": [
+            "pointer(${1:type}) ${2:name}"
+        ],
+        "description": "Snippet for Pointer"
+    },
+    "Method-function":
+    {
+        "prefix": "function",
+        "body": [
+            "${1:access_modifier} (ref ${2:class_of_this} ${3:name}) function (${4:${5:access} ${6:value_type} ${7:name_of_var}}): ${8:return_type} ${9:name}",
+            "\t$0",
+            "end"
+        ],
+        "description": "Snippet for method-function"
+    },
+    "Method-procedure":
+    {
+        "prefix": "procedure",
+        "body": [
+            "${1:access_modifier} (ref ${2:class_of_this} ${3:name}) procedure (${4:${5:access} ${6:value_type} ${7:name_of_var}}): ${8:name}",
+            "\t$0",
+            "end"
+        ],
+        "description": "Snippet for procedure"
+    },
+    "Method-function (Abstract)":
+    {
+        "prefix": "function",
+        "body": [
+            "${1:access_modifier} abstract (ref ${2:class_of_this} ${3:name}) function (${4:${5:access} ${6:value_type} ${7:name_of_var}}): ${8:return_type} ${9:name};"
+        ],
+        "description": "Snippet for method-function (Abstract)"
+    },
+    "Method-procedure (Abstract)":
+    {
+        "prefix": "procedure",
+        "body": [
+            "${1:access_modifier} abstract (ref ${2:class_of_this} ${3:name}) procedure (${4:${5:access} ${6:value_type} ${7:name_of_var}}): ${8:name};"
+        ],
+        "description": "Snippet for procedure (Abstract)"
+    },
+    "Field-Variable":{
+        "prefix": "variable",
+        "body": [
+            "${1:access_modifier} variable ${2:type} ${3:name} := ${4:expr};"
+        ],
+        "description": "Snippet for \"variable...\""
+    },
+    "Field-Variable (Readonly, in module)":{
+        "prefix": "variable",
+        "body": [
+            "${1:access_modifier} readonly variable ${2:type} ${3:name} := ${4:expr};"
+        ],
+        "description": "Snippet for \"variable...\""
+    }
+}
