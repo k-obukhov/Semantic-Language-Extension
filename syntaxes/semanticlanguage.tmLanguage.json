@@ -83,10 +83,6 @@
                 {
                     "name": "storage.modifier.semanticlanguage",
                     "match": "\\b(public|private|const|readonly)\\b"
-                },
-                {
-                    "name": "storage.modifier.semanticlanguage",
-                    "match": "\\b(открытое|закрытое|константа|readonly)\\b"
                 }
             ]
         },
