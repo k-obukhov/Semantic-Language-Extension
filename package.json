@@ -1,70 +1,71 @@
 {
-    "name": "semantic-language",
-    "displayName": "Semantic Language",
-    "description": "Semantic Language (SLang) support for VSCode",
-    "version": "0.0.1",
-    "publisher": "NothingIsGood",
-    "engines": {
-        "vscode": "^1.40.0"
-    },
-    "categories": [],
-    "activationEvents": [
-		"*"
-	],
-    "main": "./out/extension",
-    "contributes": {
-		"languages": [
-			{
-				"id": "semanticlanguage",
-				"aliases": [
-					"Semantic Language",
-					"semanticlanguage"
-				],
-				"extensions": [
-					".sl"
-				],
-				"configuration": "./language-configuration.json"
-			}
-		],
-		"grammars": [
-			{
-				"language": "semanticlanguage",
-				"scopeName": "source.semlang",
-				"path": "./syntaxes/semanticlanguage.tmLanguage.json"
-			}
-		],
-		"snippets": [
-			{
-				"language": "semanticlanguage",
-				"path": "./snippets/semanticlanguage.snippets.json"
-			}
-		],
-		"commands": [
-            {
-                "command": "ext.InitProject",
-                "title": "SL: Create new project in current workspace"
-            },
-            {
-                "command": "ext.ShowHelp",
-                "title": "SL: Show Help"
-            }
-
-        ]
-		
-	},
-
-    "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "npm run compile && node ./node_modules/vscode/bin/test"
-    },
-    "devDependencies": {
-        "typescript": "^2.6.1",
-        "vscode": "^1.1.21",
-        "tslint": "^5.8.0",
-        "@types/node": "^8.10.25",
-        "@types/mocha": "^2.2.42"
-    }
+ "name": "semantic-language",
+ "displayName": "Semantic Language",
+ "description": "Semantic Language (SLang) support for VSCode",
+ "version": "0.0.1",
+ "publisher": "NothingIsGood",
+ "engines": {
+  "vscode": "^1.40.0"
+ },
+ "categories": [],
+ "activationEvents": [
+  "*"
+ ],
+ "main": "./out/extension",
+ "contributes": {
+  "languages": [
+   {
+    "id": "semanticlanguage",
+    "aliases": [
+     "Semantic Language",
+     "semanticlanguage"
+    ],
+    "extensions": [
+     ".sl"
+    ],
+    "configuration": "./language-configuration.json"
+   }
+  ],
+  "grammars": [
+   {
+    "language": "semanticlanguage",
+    "scopeName": "source.semlang",
+    "path": "./syntaxes/semanticlanguage.tmLanguage.json"
+   }
+  ],
+  "snippets": [
+   {
+    "language": "semanticlanguage",
+    "path": "./snippets/semanticlanguage.snippets.json"
+   }
+  ],
+  "commands": [
+   {
+    "command": "ext.InitProject",
+    "title": "SL: Create new project in current workspace"
+   },
+   {
+    "command": "ext.ShowHelp",
+    "title": "SL: Show Help"
+   }
+  ]
+ },
+ "scripts": {
+  "vscode:prepublish": "npm run compile",
+  "compile": "tsc -p ./",
+  "watch": "tsc -watch -p ./",
+  "postinstall": "node ./node_modules/vscode/bin/install",
+  "test": "npm run compile && node ./node_modules/vscode/bin/test"
+ },
+ "devDependencies": {
+  "typescript": "^2.6.1",
+  "vscode": "^1.1.21",
+  "tslint": "^5.8.0",
+  "@types/node": "^8.10.25",
+  "@types/mocha": "^2.2.42"
+ },
+ "dependencies": {
+  "@types/fs-extra": "^8.1.0",
+  "fs-extra": "^9.0.0"
+ }
 }

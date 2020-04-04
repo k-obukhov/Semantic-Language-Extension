@@ -1,10 +1,14 @@
 'use strict';
 import * as path from 'path';
-const fs = require('fs');
+import { getHelpFile, getTemplateFile } from './utils/extPath';
+import * as buildTask from './tasks/buildTask';
 
+import * as fs from "fs-extra"
 import * as vscode from 'vscode';
 
 export function activate(context: vscode.ExtensionContext) {
+    buildTask.initBuild(context);
+
 	context.subscriptions.push(
         vscode.commands.registerCommand('ext.InitProject', 
         async () => {
@@ -31,10 +35,14 @@ export function activate(context: vscode.ExtensionContext) {
                             fs.mkdirSync(dir);
 
                             let pfile : string = path.join(dir, "Main.sl");
-                    
-                            fs.writeFile(pfile,'module Main\nstart\n\toutput \"Hello World!\";\nend', "utf-8", 
-                                (err: Error) => {if(err) throw err; console.log("Project was created");
-                            });
+                            let sourceMain : string = getTemplateFile(context, "Main.sl");
+
+                            fs.copy(sourceMain, pfile);
+
+                            let gitFile : string = path.join(dir, ".gitignore");
+                            let sourceGit : string = getTemplateFile(context, ".gitignore");
+
+                            fs.copy(sourceGit, gitFile);
                             
                             if (!fs.existsSync(pfile)) 
                             {
@@ -52,8 +60,8 @@ export function activate(context: vscode.ExtensionContext) {
                             }
 
                         }
-                        catch {
-                            vscode.window.showErrorMessage("Error in project creating");
+                        catch (e) {
+                            vscode.window.showErrorMessage(`Error in project creating - ${e}`);
                         }
                     }
                     else {
@@ -68,7 +76,7 @@ export function activate(context: vscode.ExtensionContext) {
         vscode.commands.registerCommand('ext.ShowHelp', 
         () => 
         {
-            fs.readFile(__dirname + "../../help/index.html", (err: Error, data: string) => 
+            fs.readFile(getHelpFile(context, "index.html"), (err, data) => 
             {
                 if (err)
                 {
