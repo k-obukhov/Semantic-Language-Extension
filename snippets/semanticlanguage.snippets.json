@@ -60,7 +60,7 @@
     "Function":{
         "prefix": "function",
         "body": [
-            "${1:access_modifier} function(${2:${3:access} ${4:value_type} ${5:name_of_var}}): ${6:return_type} ${7:name}",
+            "${1:access_modifier} function(): ${2:return_type} ${3:name}",
             "\t$0",
             "end"
         ],
@@ -69,7 +69,7 @@
     "Procedure":{
         "prefix": "procedure",
         "body": [
-            "${1:access_modifier} procedure(${2:${3:access} ${4:value_type} ${5:name_of_var}}): ${6:name of proc}",
+            "${1:access_modifier} procedure(): ${2:name}",
             "\t$0",
             "end"
         ],
@@ -113,12 +113,12 @@
         "body": [
             "array [${1:size}] ${2:type} ${3:name}"
         ],
-        "description": "Snippet for Array"
+        "description": "Snippet for Array declare"
     },
     "Class": {
         "prefix": "class",
         "body": [
-            "${1:access_modifier} class ${2:name}",
+            "${1:access_modifier} class ${2:name};",
             "end"
         ],
         "description": "Snippet for Class"
@@ -127,15 +127,15 @@
     {
         "prefix": "pointer",
         "body": [
-            "pointer(${1:type}) ${2:name}"
+            "pointer(${1:type}) ${2:name};"
         ],
-        "description": "Snippet for Pointer"
+        "description": "Snippet for Pointer declare"
     },
     "Method-function":
     {
         "prefix": "function",
         "body": [
-            "${1:access_modifier} (ref ${2:class_of_this} ${3:name}) function (${4:${5:access} ${6:value_type} ${7:name_of_var}}): ${8:return_type} ${9:name}",
+            "${1:access_modifier} (${2:class_of_this} ${3:name}) function (): ${4:return_type} ${5:name}",
             "\t$0",
             "end"
         ],
@@ -145,7 +145,7 @@
     {
         "prefix": "procedure",
         "body": [
-            "${1:access_modifier} (ref ${2:class_of_this} ${3:name}) procedure (${4:${5:access} ${6:value_type} ${7:name_of_var}}): ${8:name}",
+            "${1:access_modifier} (${2:class_of_this} ${3:name}) procedure (): ${4:name}",
             "\t$0",
             "end"
         ],
@@ -155,7 +155,7 @@
     {
         "prefix": "function",
         "body": [
-            "${1:access_modifier} abstract (${2:class_of_this} ${3:name}) function (${4:${5:access} ${6:value_type} ${7:name_of_var}}): ${8:return_type} ${9:name};"
+            "${1:access_modifier} abstract (${2:class_of_this} ${3:name}) function (): ${4:return_type} ${5:name};"
         ],
         "description": "Snippet for method-function (Abstract)"
     },
@@ -163,22 +163,43 @@
     {
         "prefix": "procedure",
         "body": [
-            "${1:access_modifier} abstract (${2:class_of_this} ${3:name}) procedure (${4:${5:access} ${6:value_type} ${7:name_of_var}}): ${8:name};"
+            "${1:access_modifier} abstract (${2:class_of_this} ${3:name}) procedure (): ${4:name};"
         ],
         "description": "Snippet for procedure (Abstract)"
     },
-    "Field-Variable":{
+    "Field-Variable (in module or class)":{
         "prefix": "variable",
         "body": [
             "${1:access_modifier} variable ${2:type} ${3:name} := ${4:expr};"
         ],
-        "description": "Snippet for \"variable...\""
+        "description": "Snippet for field-variable"
     },
     "Field-Variable (Readonly, in module)":{
         "prefix": "variable",
         "body": [
             "${1:access_modifier} readonly variable ${2:type} ${3:name} := ${4:expr};"
         ],
-        "description": "Snippet for \"variable...\""
+        "description": "Snippet for readonly field-variable"
+    },
+    "Field-Const (in module)":{
+        "prefix": "const",
+        "body": [
+            "${1:access_modifier} const ${2:type} ${3:name} := ${4:expr};"
+        ],
+        "description": "Snippet for field-const"
+    },
+    "Param (val)": {
+        "prefix": "val",
+        "body": [
+            "val ${1:type} ${2:name}"
+        ],
+        "description": "Snippet for val-parameter"
+    },
+    "Param (ref)": {
+        "prefix": "ref",
+        "body": [
+            "ref ${1:type} ${2:name}"
+        ],
+        "description": "Snippet for ref-parameter"
     }
 }

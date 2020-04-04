@@ -100,7 +100,7 @@
 				"primitive": {
                     "patterns": [
                         {
-                            "match": "\\b(integer|real|boolean|character|class|pointer|unit)\\b",
+                            "match": "\\b(integer|real|boolean|character|class|pointer|string)\\b",
                             "name": "storage.type.primitive.semanticlanguage"
                         }
                     ]
@@ -119,7 +119,7 @@
             "patterns":  [
                 {
                     "name": "keyword.control.semanticlanguage",
-                    "match": "\\b(if|while|elseif|else|repeat|then|do|using)\\b"
+                    "match": "\\b(if|while|elseif|else|repeat|then|do)\\b"
                 },
                 {
                     "name": "keyword.iofunc.semanticlanguage",
@@ -130,8 +130,12 @@
                     "match": "\\b(val|ref|function|procedure|call|return)\\b"
                 },
                 {
+                    "name": "keyword.oop.semanticlanguage",
+                    "match": "\\b(abstract|override|empty|inherit|base)\\b"
+                },
+                {
                     "name": "keyword.other.semanticlanguage",
-                    "match": "\\b(nil|true|false|module|import|end|start|let|variable|inherit|base|override|abstract|new)\\b"
+                    "match": "\\b(nil|true|false|module|import|end|start|let|variable|new|from)\\b"
                 }
             ]
         },
