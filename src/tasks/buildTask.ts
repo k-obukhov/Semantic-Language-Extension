@@ -3,39 +3,39 @@ import * as vscode from "vscode";
 import { ExtensionContext } from "vscode";
 import * as extPath from "../utils/extPath"
 
-export function initBuild(context: ExtensionContext)
+export class SlangBuildTaskProvider implements vscode.TaskProvider {
+
+    private context: ExtensionContext;
+    constructor (extContext: ExtensionContext)
+    {
+        this.context = extContext;
+    }
+
+    provideTasks(token?: vscode.CancellationToken | undefined): vscode.ProviderResult<vscode.Task[]> {
+        return getBuildTask(this.context);
+    }
+    resolveTask(task: vscode.Task, token?: vscode.CancellationToken | undefined): vscode.ProviderResult<vscode.Task> {
+        return undefined;
+    }
+}
+
+export function getBuildTask(context: ExtensionContext): vscode.Task[] | undefined
 {
     if (vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders.length > 0)
     {
-        // have many folders
-        let pathToProject: string = "";
-        if (vscode.workspace.workspaceFolders.length != 1)
+        let pathToProject: string | undefined = vscode.workspace.getConfiguration().get("slang.default_project");
+        if (pathToProject == undefined)
         {
-            let allItems: string[] = [];
-            vscode.workspace.workspaceFolders.forEach((value, _index) => allItems.push(value.uri.fsPath));
-            vscode.window.showQuickPick(allItems, {canPickMany: false}, undefined).then((value) => {
-                if (value != undefined)
-                {
-                    pathToProject = value;
-                }
-                else
-                {
-                    return;
-                }
-            });
-        }
-        // have one
-        else
-        {
-            pathToProject = vscode.workspace.workspaceFolders[0].uri.fsPath;
+            vscode.window.showErrorMessage("Error, start project is not set");
+            return [];
         }
         let pathToCompiler = extPath.getCompilerPath(context);
 
         let args = [
             pathToProject,
-            path.join(pathToProject, "gen"),
+            path.normalize(path.join(pathToProject, "gen")),
             "cpp",
-            path.join(pathToProject, "bin/program.out")
+            path.normalize(path.join(pathToProject, "bin/program.out"))
         ];
 
         const cli = path.normalize(pathToCompiler);
@@ -46,31 +46,19 @@ export function initBuild(context: ExtensionContext)
             label: "SL: Build"
         };
 
-        let folder = vscode.workspace.workspaceFolders.find((value, n_, obj_) => value.uri.fsPath == pathToProject);
-        if (folder != undefined)
-        {
-            const buildTask = new vscode.Task(definition, folder, "Build", "Slang", exec, "$slang");
-            buildTask.group = vscode.TaskGroup.Build;
-            buildTask.presentationOptions = {
-                echo: false,
-                focus: true,
-                panel: vscode.TaskPanelKind.Dedicated,
-                reveal: vscode.TaskRevealKind.Always
-            };
-
-            const taskProvider: vscode.TaskProvider = {
-                provideTasks: () => {
-                    return [
-                        buildTask
-                    ];
-                },
-                resolveTask: () => {
-                    return undefined;
-                }
-            };
-
-            const d = vscode.workspace.registerTaskProvider("slang", taskProvider);
-            context.subscriptions.push(d);
-        }
+        const buildTask = new vscode.Task(definition, vscode.TaskScope.Workspace, "Build", "Slang", exec, "$slang");
+        buildTask.group = vscode.TaskGroup.Build;
+        buildTask.presentationOptions = {
+            echo: false,
+            focus: true,
+            panel: vscode.TaskPanelKind.Dedicated,
+            reveal: vscode.TaskRevealKind.Always
+        };
+            
+        return [buildTask];
+    }
+    else
+    {
+        vscode.window.showErrorMessage("There is no workspace folders");
     }
 }
