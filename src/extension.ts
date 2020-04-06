@@ -5,11 +5,14 @@ import * as buildTask from './tasks/buildTask';
 
 import * as fs from "fs-extra"
 import * as vscode from 'vscode';
+import { SlangLaunchTaskProvider } from './tasks/launchTask';
 
 export function activate(context: vscode.ExtensionContext) {
     
     const d = vscode.workspace.registerTaskProvider("slang", new buildTask.SlangBuildTaskProvider(context));
     context.subscriptions.push(d);
+
+    context.subscriptions.push(vscode.workspace.registerTaskProvider("slang", new SlangLaunchTaskProvider(context)))
 
     context.subscriptions.push(
         vscode.commands.registerCommand('ext.SetActive', async() => {
@@ -21,6 +24,8 @@ export function activate(context: vscode.ExtensionContext) {
                 quickPick.onDidChangeSelection(selection => {
                     if (selection[0]) {
                         vscode.workspace.getConfiguration().update('slang.default_project', selection[0].label);
+                        vscode.window.showInformationMessage(`Active project updated — ${selection[0].label}`);
+                        quickPick.dispose();
                     }
                 });
                 quickPick.onDidHide(() => quickPick.dispose());
@@ -37,6 +42,12 @@ export function activate(context: vscode.ExtensionContext) {
             let projectName = await vscode.window.showInputBox({
                 placeHolder: "input Project Name"
             });
+
+            if (projectName == undefined)
+            {
+                vscode.window.showErrorMessage("Project name was not set");
+                return;
+            }
 
             const options: vscode.OpenDialogOptions = {
                 canSelectMany: false,

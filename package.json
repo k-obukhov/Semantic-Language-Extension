@@ -15,6 +15,13 @@
     ],
     "main":"./out/extension",
     "contributes":{
+        "keybindings": [
+            {
+                "key": "f7",
+                "command": "workbench.action.tasks.runTask",
+                "args": "SL: Launch"
+            }
+        ],
         "configuration":{
             "title":"Slang",
             "properties":{
@@ -33,7 +40,10 @@
                 "id":"semanticlanguage",
                 "aliases":[
                     "Semantic Language",
-                    "semanticlanguage"
+                    "semanticlanguage",
+                    "Slang",
+                    "SLang",
+                    "slang"
                 ],
                 "extensions":[
                     ".sl"
