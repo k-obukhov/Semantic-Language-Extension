@@ -34,7 +34,7 @@ function getLaunchTask(context: ExtensionContext): vscode.Task[] | undefined
             type: "shell",
             label: "SL: Launch"
         };
-        const exec = new vscode.ShellExecution(cli);
+        const exec = new vscode.ShellExecution(cli, {cwd: pathToProject});
         const task = new vscode.Task(definition, vscode.TaskScope.Workspace, "Launch", "Slang", exec);
         task.group = vscode.TaskGroup.Test;
         task.presentationOptions = {
