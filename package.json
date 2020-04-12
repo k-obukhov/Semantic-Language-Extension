@@ -19,7 +19,7 @@
             {
                 "key": "f7",
                 "command": "workbench.action.tasks.runTask",
-                "args": "SL: Launch"
+                "args": "Slang: Launch"
             }
         ],
         "configuration":{
