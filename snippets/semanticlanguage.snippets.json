@@ -118,7 +118,7 @@
     "Class": {
         "prefix": "class",
         "body": [
-            "${1:access_modifier} class ${2:name};",
+            "${1:access_modifier} class ${2:name}",
             "end"
         ],
         "description": "Snippet for Class"
@@ -155,7 +155,9 @@
     {
         "prefix": "function",
         "body": [
-            "${1:access_modifier} abstract (${2:class_of_this} ${3:name}) function (): ${4:return_type} ${5:name};"
+            "${1:access_modifier} abstract (${2:class_of_this} ${3:name}) function (): ${4:return_type} ${5:name}",
+            "\t$0",
+            "end"
         ],
         "description": "Snippet for method-function (Abstract)"
     },
@@ -163,7 +165,9 @@
     {
         "prefix": "procedure",
         "body": [
-            "${1:access_modifier} abstract (${2:class_of_this} ${3:name}) procedure (): ${4:name};"
+            "${1:access_modifier} abstract (${2:class_of_this} ${3:name}) procedure (): ${4:name}",
+            "\t$0",
+            "end"
         ],
         "description": "Snippet for procedure (Abstract)"
     },
