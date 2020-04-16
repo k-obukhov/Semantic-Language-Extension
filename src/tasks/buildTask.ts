@@ -2,6 +2,7 @@ import * as path from "path";
 import * as vscode from "vscode";
 import { ExtensionContext } from "vscode";
 import * as extPath from "../utils/extPath"
+import { ConfigurationManager } from '../utils/configManager'
 
 export class SlangBuildTaskProvider implements vscode.TaskProvider {
 
@@ -23,39 +24,42 @@ export function getBuildTask(context: ExtensionContext): vscode.Task[] | undefin
 {
     if (vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders.length > 0)
     {
-        let pathToProject: string | undefined = vscode.workspace.getConfiguration().get("slang.default_project");
+        let pathToProject: unknown | undefined = ConfigurationManager.getConfig(ConfigurationManager.activeProjectKey);
         if (pathToProject == undefined)
         {
             vscode.window.showErrorMessage("Error, start project is not set");
             return [];
         }
-        let pathToCompiler = extPath.getCompilerPath(context);
+        else if (typeof pathToProject == 'string')
+        {
+            let pathToCompiler = extPath.getCompilerPath(context);
 
-        let args = [
-            pathToProject,
-            path.normalize(path.join(pathToProject, "gen")),
-            "cpp",
-            path.normalize(path.join(pathToProject, "bin/program.out"))
-        ];
-
-        const cli = path.normalize(pathToCompiler);
-        const exec = new vscode.ShellExecution(cli, args, {cwd: pathToProject});
-
-        const definition : vscode.TaskDefinition = {
-            type: "shell",
-            label: "SL: Build"
-        };
-
-        const buildTask = new vscode.Task(definition, vscode.TaskScope.Workspace, "Build", "Slang", exec, "$slang");
-        buildTask.group = vscode.TaskGroup.Build;
-        buildTask.presentationOptions = {
-            echo: false,
-            focus: true,
-            panel: vscode.TaskPanelKind.Dedicated,
-            reveal: vscode.TaskRevealKind.Always
-        };
-            
-        return [buildTask];
+            let args = [
+                pathToProject,
+                path.normalize(path.join(pathToProject, "gen")),
+                "cpp",
+                path.normalize(path.join(pathToProject, "bin/program.out"))
+            ];
+    
+            const cli = path.normalize(pathToCompiler);
+            const exec = new vscode.ShellExecution(cli, args, {cwd: pathToProject});
+    
+            const definition : vscode.TaskDefinition = {
+                type: "shell",
+                label: "SL: Build"
+            };
+    
+            const buildTask = new vscode.Task(definition, vscode.TaskScope.Workspace, "Build", "Slang", exec, "$slang");
+            buildTask.group = vscode.TaskGroup.Build;
+            buildTask.presentationOptions = {
+                echo: false,
+                focus: true,
+                panel: vscode.TaskPanelKind.Dedicated,
+                reveal: vscode.TaskRevealKind.Always
+            };
+                
+            return [buildTask];
+        }
     }
     else
     {

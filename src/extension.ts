@@ -6,31 +6,27 @@ import * as buildTask from './tasks/buildTask';
 import * as fs from "fs-extra"
 import * as vscode from 'vscode';
 import { SlangLaunchTaskProvider } from './tasks/launchTask';
+import { ConfigurationManager } from './utils/configManager'
 
 export function activate(context: vscode.ExtensionContext) {
     
     const d = vscode.workspace.registerTaskProvider("slang", new buildTask.SlangBuildTaskProvider(context));
     context.subscriptions.push(d);
 
-    context.subscriptions.push(vscode.workspace.registerTaskProvider("slang", new SlangLaunchTaskProvider(context)))
+    context.subscriptions.push(vscode.workspace.registerTaskProvider("slang", new SlangLaunchTaskProvider(context)));
+
+    vscode.workspace.onDidChangeWorkspaceFolders((e) => {ConfigurationManager.updateStatusBar()});
+    ConfigurationManager.updateStatusBar();
 
     context.subscriptions.push(
         vscode.commands.registerCommand('ext.SetActive', async() => {
-            if (vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders.length > 0)
-            {
-                const quickPick = vscode.window.createQuickPick();
-                quickPick.canSelectMany = false;
-                quickPick.items = vscode.workspace.workspaceFolders.map((val, idx, arr) => {return {label: val.uri.fsPath}});
-                quickPick.onDidChangeSelection(selection => {
-                    if (selection[0]) {
-                        vscode.workspace.getConfiguration().update('slang.default_project', selection[0].label);
-                        vscode.window.showInformationMessage(`Active project updated — ${selection[0].label}`);
-                        quickPick.dispose();
-                    }
-                });
-                quickPick.onDidHide(() => quickPick.dispose());
-                quickPick.show();
-            }
+            vscode.window.showWorkspaceFolderPick().then((folder) => {
+                if (folder != undefined)
+                {
+                    ConfigurationManager.setConfig(ConfigurationManager.activeProjectKey, folder.uri.fsPath);
+                    vscode.window.showInformationMessage(`Active project changed = ${folder.uri.fsPath}`);
+                }
+            })
         })
     );
 
@@ -84,7 +80,7 @@ export function activate(context: vscode.ExtensionContext) {
                                 });
 
                                 vscode.workspace.updateWorkspaceFolders(0, undefined, {uri: vscode.Uri.file(dir), name: `SL Project: ${projectName}`});
-                                vscode.workspace.getConfiguration().update('slang.default_project', path.normalize(dir));
+                                ConfigurationManager.setConfig(ConfigurationManager.activeProjectKey, vscode.Uri.file(dir).fsPath);
                             }
                             else 
                             {
