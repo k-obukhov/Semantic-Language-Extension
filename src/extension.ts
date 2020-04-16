@@ -1,6 +1,6 @@
 'use strict';
 import * as path from 'path';
-import { getHelpFile, getTemplateFile } from './utils/extPath';
+import { getHelpFile, getTemplateFile, getHelpResourceImage } from './utils/extPath';
 import * as buildTask from './tasks/buildTask';
 
 import * as fs from "fs-extra"
@@ -117,10 +117,13 @@ export function activate(context: vscode.ExtensionContext) {
                         'SLang Help',
                         vscode.ViewColumn.One,
                         {
-                            enableScripts: true
                         });
-
-                    panel.webview.html = data.toString();
+                    let strData = data.toString();
+                    fs.readdirSync(path.join(context.extensionPath, "help", "img")).forEach((file) => {
+                        var uri = vscode.Uri.file(getHelpResourceImage(context, file));
+                        strData = strData.replace(`img/${file}`, panel.webview.asWebviewUri(uri).toString());
+                    });
+                    panel.webview.html = strData;
                 }
             });
         })

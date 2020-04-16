@@ -16,3 +16,8 @@ export function getCompilerPath(context: ExtensionContext)
 {
     return path.join(context.extensionPath, "bin", "SlangCompiler");
 }
+
+export function getHelpResourceImage(context: ExtensionContext, subPath: string)
+{
+    return path.join(context.extensionPath, "help", "img", subPath);
+}
