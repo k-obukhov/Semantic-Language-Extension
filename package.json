@@ -76,6 +76,10 @@
             {
                 "command":"ext.SetActive",
                 "title":"SL: Set active project"
+            },
+            {
+                "command": "ext.ShowSamples",
+                "title": "SL: Open samples workspace"
             }
         ]
     },

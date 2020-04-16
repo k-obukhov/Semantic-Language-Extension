@@ -1,6 +1,6 @@
 'use strict';
 import * as path from 'path';
-import { getHelpFile, getTemplateFile, getHelpResourceImage } from './utils/extPath';
+import { getHelpFile, getTemplateFile, getHelpResourceImage, getSamplesWorkspacePath } from './utils/extPath';
 import * as buildTask from './tasks/buildTask';
 
 import * as fs from "fs-extra"
@@ -97,6 +97,12 @@ export function activate(context: vscode.ExtensionContext) {
                     }
                 }
             });
+        })
+    );
+    
+    context.subscriptions.push(
+        vscode.commands.registerCommand('ext.ShowSamples', () => {
+            vscode.commands.executeCommand('vscode.openFolder', vscode.Uri.file(getSamplesWorkspacePath(context)), true);
         })
     );
 

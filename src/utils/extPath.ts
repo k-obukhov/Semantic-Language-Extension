@@ -21,3 +21,8 @@ export function getHelpResourceImage(context: ExtensionContext, subPath: string)
 {
     return path.join(context.extensionPath, "help", "img", subPath);
 }
+
+export function getSamplesWorkspacePath(context: ExtensionContext)
+{
+    return path.join(context.extensionPath, "bin", "Samples", "samples-workspace.code-workspace");
+}
