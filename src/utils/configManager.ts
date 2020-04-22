@@ -10,7 +10,7 @@ export class ConfigurationManager
         {
             if (key == this.activeProjectKey)
             {
-                this.updateStatusBar();
+                this.updateStatusBarWithValue(value);
             }
         });
     }
@@ -20,13 +20,13 @@ export class ConfigurationManager
         return vscode.workspace.getConfiguration().get(key);
     }
 
-    public static updateStatusBar() {
-        let folder = this.getConfig(this.activeProjectKey);
-        if (folder != undefined && typeof(folder) == 'string')
+    public static updateStatusBarWithValue(value: unknown)
+    {
+        if (value != undefined && typeof(value) == 'string')
         {
-            if (fs.existsSync(folder))
+            if (fs.existsSync(value))
             {
-                vscode.window.setStatusBarMessage(`Active project — ${folder}`);
+                vscode.window.setStatusBarMessage(`Active project — ${value}`);
             }
             else
             {
@@ -37,5 +37,10 @@ export class ConfigurationManager
         {
             vscode.window.setStatusBarMessage("Active project was not set");
         }
+    }
+
+    public static updateStatusBar() {
+        let folder = this.getConfig(this.activeProjectKey);
+        this.updateStatusBarWithValue(folder);
     }
 }
