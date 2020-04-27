@@ -14,7 +14,7 @@ export function getTemplateFile(context: ExtensionContext, subPath: string)
 
 export function getCompilerPath(context: ExtensionContext)
 {
-    return path.join(context.extensionPath, "bin", "SlangCompiler");
+    return path.join(context.extensionPath, "bin", "SlangCompiler.dll");
 }
 
 export function getHelpResourceImage(context: ExtensionContext, subPath: string)

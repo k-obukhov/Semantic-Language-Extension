@@ -20,6 +20,11 @@ export class SlangBuildTaskProvider implements vscode.TaskProvider {
     }
 }
 
+function toStringQuotes(value: string)
+{
+    return `\"${value}\"`;
+}
+
 export function getBuildTask(context: ExtensionContext): vscode.Task[] | undefined
 {
     if (vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders.length > 0)
@@ -35,13 +40,14 @@ export function getBuildTask(context: ExtensionContext): vscode.Task[] | undefin
             let pathToCompiler = extPath.getCompilerPath(context);
 
             let args = [
-                pathToProject,
-                path.normalize(path.join(pathToProject, "gen")),
+                toStringQuotes(pathToCompiler),
+                toStringQuotes(pathToProject),
+                toStringQuotes(path.normalize(path.join(pathToProject, "gen"))),
                 "cpp",
-                path.normalize(path.join(pathToProject, "bin/program.out"))
+                toStringQuotes(path.normalize(path.join(pathToProject, "bin/program.out")))
             ];
     
-            const cli = path.normalize(pathToCompiler);
+            const cli = "dotnet";
             const exec = new vscode.ShellExecution(cli, args, {cwd: pathToProject});
     
             const definition : vscode.TaskDefinition = {
