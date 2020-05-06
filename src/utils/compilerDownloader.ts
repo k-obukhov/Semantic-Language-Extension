@@ -124,6 +124,10 @@ function downloadCompiler(item: {id: Number, tag_name: string}, context: vscode.
         {
             vscode.window.showInformationMessage("Downloaded, checksum is valid");
             unzipFile(pathToArchive, getTempDownloadsFolder(context));
+            if (!fs.existsSync(getCompilerFolder(context)))
+            {
+                fs.mkdirSync(getCompilerFolder(context));
+            }
             ncp.ncp(getExtractedZipFolder(context), getCompilerFolder(context), (err) => 
             {
                 if (err)
