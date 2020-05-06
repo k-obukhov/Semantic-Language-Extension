@@ -1,5 +1,7 @@
 out
 bin
 node_modules
+tmpdownloads
+help/version.txt
 .vscode-test/
 *.vsix

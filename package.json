@@ -89,14 +89,23 @@
         "test": "npm run compile && node ./node_modules/vscode/bin/test"
     },
     "devDependencies": {
-        "typescript": "^3.8.3",
-        "vscode": "^1.1.21",
-        "tslint": "^5.8.0",
+        "@types/mocha": "^2.2.42",
         "@types/node": "^13.11.1",
-        "@types/mocha": "^2.2.42"
+        "@types/request": "^2.48.4",
+        "tslint": "^5.8.0",
+        "typescript": "^3.8.3",
+        "vscode": "^1.1.21"
     },
     "dependencies": {
+        "@types/adm-zip": "^0.4.33",
         "@types/fs-extra": "^8.1.0",
-        "fs-extra": "^9.0.0"
+        "@types/ncp": "^2.0.3",
+        "@types/node-fetch": "^2.5.7",
+        "@types/semver": "^7.1.0",
+        "adm-zip": "^0.4.14",
+        "fs-extra": "^9.0.0",
+        "ncp": "^2.0.0",
+        "node-fetch": "^2.6.0",
+        "semver": "^7.3.2"
     }
 }

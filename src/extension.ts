@@ -7,9 +7,12 @@ import * as fs from "fs-extra"
 import * as vscode from 'vscode';
 import { SlangLaunchTaskProvider } from './tasks/launchTask';
 import { ConfigurationManager } from './utils/configManager'
+import { checkCompilerVersion } from './utils/compilerDownloader';
 
 export function activate(context: vscode.ExtensionContext) {
     
+    checkCompilerVersion(context);
+
     const d = vscode.workspace.registerTaskProvider("slang", new buildTask.SlangBuildTaskProvider(context));
     context.subscriptions.push(d);
 
