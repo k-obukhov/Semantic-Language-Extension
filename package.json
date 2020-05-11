@@ -3,6 +3,10 @@
     "displayName": "SLangIDE (Semantic Language)",
     "description": "Semantic Language (SLang) support for VSCode",
     "version": "1.0.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/NothingIsGood/Semantic-Language-Extension.git"
+    },
     "publisher": "NothingIsGood",
     "engines": {
         "vscode": "^1.40.0"
