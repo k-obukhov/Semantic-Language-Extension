@@ -35,7 +35,7 @@ function api<T>(path: string): Promise<T>
     .then(data => data)
     .catch((error: Error) => 
     {
-        vscode.window.showErrorMessage(error.message);
+        vscode.window.showErrorMessage(`Error while checking available updates: ${error.message}`);
         throw error;
     });
 }
