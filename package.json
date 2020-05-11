@@ -1,6 +1,6 @@
 {
     "name": "semantic-language",
-    "displayName": "Semantic Language",
+    "displayName": "SLangIDE (Semantic Language)",
     "description": "Semantic Language (SLang) support for VSCode",
     "version": "1.0.0",
     "publisher": "NothingIsGood",

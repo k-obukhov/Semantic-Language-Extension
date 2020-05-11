@@ -22,7 +22,7 @@ export class ConfigurationManager
 
     public static updateStatusBarWithValue(value: unknown)
     {
-        if (value != undefined && typeof(value) == 'string')
+        if (typeof(value) == 'string' && value != null)
         {
             if (fs.existsSync(value))
             {
