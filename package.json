@@ -19,9 +19,14 @@
     "contributes": {
         "keybindings": [
             {
-                "key": "f7",
+                "key": "ctrl+f10",
                 "command": "workbench.action.tasks.runTask",
                 "args": "Slang: Launch"
+            },
+            {
+                "key": "ctrl+f9",
+                "command": "workbench.action.tasks.runTask",
+                "args": "Slang: Build"
             }
         ],
         "configuration": {
