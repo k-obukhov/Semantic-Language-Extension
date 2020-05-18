@@ -13,16 +13,22 @@
         ],
         "description": "Snippet for \"import...\""
     },
-    "Module":{
+    "Module (Main) ":{
         "prefix": "module",
         "body": [
-            "module ${1:name}",
+            "module Main",
             "start",
             "end"
         ],
-        "description": "Snippet for \"module...\""
+        "description": "Snippet for \"main module...\""
     },
-
+    "Module": {
+        "prefix": "module",
+        "body": [
+            "module ${1:name}"
+        ],
+        "description": "Snippet fom \"not main module\""
+    },
     "Variable":{
         "prefix": "variable",
         "body": [
