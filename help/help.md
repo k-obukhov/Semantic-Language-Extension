@@ -1,20 +1,20 @@
 # Установка среды
 ## Зависимости
 ### Visual Studio Code
-* Перейти на сайт Visual Studio Code (https://code.visualstudio.com/Download)[https://code.visualstudio.com/Download]
+* Перейти на сайт Visual Studio Code [https://code.visualstudio.com/Download](https://code.visualstudio.com/Download)
 * Загрузить установочный файл Visual Studio Code для вашей ОС и платформы
 * Примечание для Windows: User Installer и System Installer отличаются тем, что в первом случае будет установка в папку пользователя, а во втором случае установка будет для всех пользователей
 * Следовать инструкциям программы установки
 * Ссылки
-  * (Документация: Установка)[https://code.visualstudio.com/docs/setup/setup-overview] — там же имеются ссылки на инструкции для разных ОС
+  * [Документация: Установка](https://code.visualstudio.com/docs/setup/setup-overview) — там же имеются ссылки на инструкции для разных ОС
 ### .NET Core Runtime
-* Перейти на сайт (https://dotnet.microsoft.com/download/dotnet-core/3.1)[https://dotnet.microsoft.com/download/dotnet-core/3.1]
+* Перейти на сайт [https://dotnet.microsoft.com/download/dotnet-core/3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 * Нам необходимо установить только среду выполнения, поэтому смотрим колонку **Run apps - Runtime**, а в ней — вкладку **.NET Core Runtime**
 * Выбираем соответствующую платформу и ОС в колонке **Installers**
 * Запустить загруженный файл и следовать инструкциям по установке
 ### Компилятор C++
 #### Windows
-* Рекомендуется загрузить MinGW-w64, например, отсюда (https://sourceforge.net/projects/mingw-w64/files/)[https://sourceforge.net/projects/mingw-w64/files/], вкладки **MinGW-W64 GCC-8.1.0** либо **MinGW-W64 Online Installer**
+* Рекомендуется загрузить MinGW-w64, например, отсюда [https://sourceforge.net/projects/mingw-w64/files/](https://sourceforge.net/projects/mingw-w64/files/), вкладки **MinGW-W64 GCC-8.1.0** либо **MinGW-W64 Online Installer**
 * Альтернативы -- TDM-GCC, MinGW (mingw-32)
 * После установки компилятора нужно открыть командную строку и проверить наличие g++ в PATH, введя g++ и выполнив команду, нажав Enter
 * В случае, если компилятор из консоли не найден, нужно добавить директорию, где установлен компилятор, в переменную среды PATH
