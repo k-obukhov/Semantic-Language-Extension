@@ -87,6 +87,14 @@
             {
                 "command": "ext.ShowSamples",
                 "title": "SL: Open samples workspace"
+            },
+            {
+                "command": "ext.ShowLangHelp",
+                "title": "SL: Show language help"
+            },
+            {
+                "command": "ext.ShowLibHelp",
+                "title": "SL: Show standard lib help"
             }
         ]
     },
@@ -108,11 +116,13 @@
     "dependencies": {
         "@types/adm-zip": "^0.4.33",
         "@types/fs-extra": "^8.1.0",
+        "@types/markdown-it": "^10.0.1",
         "@types/ncp": "^2.0.3",
         "@types/node-fetch": "^2.5.7",
         "@types/semver": "^7.1.0",
         "adm-zip": "^0.4.14",
         "fs-extra": "^9.0.0",
+        "markdown-it": "^11.0.0",
         "ncp": "^2.0.0",
         "node-fetch": "^2.6.0",
         "semver": "^7.3.2"

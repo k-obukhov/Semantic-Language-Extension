@@ -9,6 +9,64 @@ import { SlangLaunchTaskProvider } from './tasks/launchTask';
 import { ConfigurationManager } from './utils/configManager'
 import { checkCompilerVersion } from './utils/compilerDownloader';
 
+import MarkdownIt = require('markdown-it');
+
+function loadMarkdownWithMedia(pathToFile: string, panelName: string, context: vscode.ExtensionContext)
+{
+    fs.readFile(pathToFile, (err, data) => 
+    {
+        if (err)
+        {
+            vscode.window.showErrorMessage(`Error while reading help file = ${err}`);
+        }
+        else
+        {
+            const panel = vscode.window.createWebviewPanel(
+                panelName,
+                panelName,
+                vscode.ViewColumn.One,
+                {
+                });
+
+            let strData = data.toString();
+            let converter = new MarkdownIt()
+            strData = converter.render(strData);
+
+            fs.readdirSync(path.join(context.extensionPath, "help", "img")).forEach((file) => {
+                var uri = vscode.Uri.file(getHelpResourceImage(context, file));
+                strData = strData.replace(`img/${file}`, panel.webview.asWebviewUri(uri).toString());
+            });
+            panel.webview.html = strData;
+        }
+    });
+}
+
+function loadMarkdown(pathToFile: string, panelName: string)
+{
+    fs.readFile(pathToFile, (err, data) => 
+    {
+        if (err)
+        {
+            vscode.window.showErrorMessage(`Error while reading help file = ${err}`);
+        }
+        else
+        {
+            const panel = vscode.window.createWebviewPanel(
+                panelName,
+                panelName,
+                vscode.ViewColumn.One,
+                {
+                });
+
+            let strData = data.toString();
+            let converter = new MarkdownIt()
+            strData = converter.render(strData);
+
+            panel.webview.html = strData;
+        }
+    });
+}
+
 export function activate(context: vscode.ExtensionContext) {
     
     checkCompilerVersion(context);
@@ -118,28 +176,23 @@ export function activate(context: vscode.ExtensionContext) {
         vscode.commands.registerCommand('ext.ShowHelp', 
         () => 
         {
-            fs.readFile(getHelpFile(context, "index.html"), (err, data) => 
-            {
-                if (err)
-                {
-                    vscode.window.showErrorMessage(`Error while reading help file = ${err}`);
-                }
-                else
-                {
-                    const panel = vscode.window.createWebviewPanel(
-                        'SLang Help',
-                        'SLang Help',
-                        vscode.ViewColumn.One,
-                        {
-                        });
-                    let strData = data.toString();
-                    fs.readdirSync(path.join(context.extensionPath, "help", "img")).forEach((file) => {
-                        var uri = vscode.Uri.file(getHelpResourceImage(context, file));
-                        strData = strData.replace(`img/${file}`, panel.webview.asWebviewUri(uri).toString());
-                    });
-                    panel.webview.html = strData;
-                }
-            });
+            loadMarkdownWithMedia(getHelpFile(context, "help-ext.md"), "SLangIDE Help", context);
+        })
+    );
+
+    context.subscriptions.push(
+        vscode.commands.registerCommand('ext.ShowLangHelp', 
+        () => 
+        {
+            loadMarkdown(getHelpFile(context, "lang.md"), "SLang Help");
+        })
+    );
+
+    context.subscriptions.push(
+        vscode.commands.registerCommand('ext.ShowLibHelp', 
+        () => 
+        {
+            loadMarkdown(getHelpFile(context, "lib.md"), "SLang Lib Help");
         })
     );
 }
