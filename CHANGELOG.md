@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.2] - 2020-06-01
+### Added
+- Two new images for extension help file
+
+### Changed
+- Help text for snippets
+
 ## [1.0.1] - 2020-05-20
 ### Added
 - Language help
@@ -24,6 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Basic SLang support for VSCode
 - Basic Help
 
-[Unreleased]: https://github.com/NothingIsGood/Semantic-Language-Extension/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/NothingIsGood/Semantic-Language-Extension/compare/v1.0.2...HEAD
+[1.0.2]: https://github.com/NothingIsGood/Semantic-Language-Extension/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/NothingIsGood/Semantic-Language-Extension/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/NothingIsGood/Semantic-Language-Extension/releases/tag/v1.0.0
