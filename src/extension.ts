@@ -113,7 +113,7 @@ export function activate(context: vscode.ExtensionContext) {
                 openLabel: 'Choose folder of project'
             };
 
-            vscode.window.showOpenDialog(options).then(fileUri => {
+            vscode.window.showOpenDialog(options).then(async fileUri => {
                 if (fileUri && fileUri[0]) 
                 {
                     let dir : string = `${fileUri[0].fsPath}/${projectName}`;
@@ -131,11 +131,6 @@ export function activate(context: vscode.ExtensionContext) {
                             let sourceGit : string = getTemplateFile(context, ".gitignore");
 
                             fs.copy(sourceGit, gitFile);
-
-                            let launchFile : string = path.join(dir, ".vscode", "launch.json");
-                            let sourcelaunch : string = getTemplateFile(context, "launch.json");
-
-                            fs.copy(sourcelaunch, launchFile);
                             
                             if (!fs.existsSync(pfile)) 
                             {

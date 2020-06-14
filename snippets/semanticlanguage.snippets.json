@@ -182,13 +182,6 @@
         ],
         "description": "Snippet for field-variable"
     },
-    "Field-Variable (Readonly, in module)":{
-        "prefix": "variable",
-        "body": [
-            "${1:access_modifier} readonly variable ${2:type} ${3:name} := ${4:expr};"
-        ],
-        "description": "Snippet for readonly field-variable"
-    },
     "Field-Const (in module)":{
         "prefix": "const",
         "body": [

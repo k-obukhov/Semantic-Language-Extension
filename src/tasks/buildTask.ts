@@ -38,13 +38,18 @@ export function getBuildTask(context: ExtensionContext): vscode.Task[] | undefin
         else if (typeof pathToProject == 'string')
         {
             let pathToCompiler = extPath.getCompilerPath(context);
+            let cPath = toStringQuotes(pathToCompiler);
+            let inPath = toStringQuotes(pathToProject);
+            let outPath = toStringQuotes(path.normalize(path.join(pathToProject, "gen")));
+            let langTag = "cpp";
+            let prPath = toStringQuotes(path.normalize(path.join(pathToProject, "bin/program.out")));
 
             let args = [
-                toStringQuotes(pathToCompiler),
-                toStringQuotes(pathToProject),
-                toStringQuotes(path.normalize(path.join(pathToProject, "gen"))),
-                "cpp",
-                toStringQuotes(path.normalize(path.join(pathToProject, "bin/program.out")))
+                cPath,
+                `-i`, `${inPath}`,
+                `-o`, `${outPath}`,
+                `-l`, `${langTag}`,
+                `-p`, `${prPath}`
             ];
     
             const cli = "dotnet";

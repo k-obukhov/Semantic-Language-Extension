@@ -86,7 +86,7 @@
             },
             {
                 "command": "ext.ShowSamples",
-                "title": "SL: Open samples workspace"
+                "title": "SL: Open examples workspace"
             },
             {
                 "command": "ext.ShowLangHelp",
