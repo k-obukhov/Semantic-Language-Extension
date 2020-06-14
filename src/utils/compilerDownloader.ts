@@ -114,8 +114,8 @@ function downloadCompiler(item: {id: Number, tag_name: string}, context: vscode.
         const pathToArchive = getTempDownloadsPath(context, SlangFile);
         const pathToCheckSum = getTempDownloadsPath(context, SlangChecksum);
         
-        downloadFile(assetSlang.browser_download_url, pathToArchive);
-        downloadFile(assetCheckSum.browser_download_url, pathToCheckSum);
+        await downloadFile(assetSlang.browser_download_url, pathToArchive);
+        await downloadFile(assetCheckSum.browser_download_url, pathToCheckSum);
 
         const checkSumText = readCheckSum(pathToCheckSum);
         const checkSumGen = await generateCheckSum(pathToArchive);
@@ -128,7 +128,7 @@ function downloadCompiler(item: {id: Number, tag_name: string}, context: vscode.
             {
                 fs.mkdirSync(getCompilerFolder(context));
             }
-            ncp.ncp(getExtractedZipFolder(context), getCompilerFolder(context), (err) => 
+            ncp.ncp(getExtractedZipFolder(context), getCompilerFolder(context), async (err) => 
             {
                 if (err)
                 {
@@ -137,6 +137,8 @@ function downloadCompiler(item: {id: Number, tag_name: string}, context: vscode.
                 }
                 fs.writeFileSync(getHelpFile(context, VersionFileName), item.tag_name);
                 vscode.window.showInformationMessage(`You're using actual compiler version: ${item.tag_name}`);
+
+                await fs.emptyDir(getTempDownloadsFolder(context));
             });
         }
         else
