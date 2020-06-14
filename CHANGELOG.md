@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.3] - 2020-06-14
+### Changed
+- Language help file updated
+- Update build task for new compiler version
+- SLangCompiler v1.0.1 - removed readonly modifier, added new cl parser, see https://github.com/NothingIsGood/SlangCompilier/releases/tag/v1.0.1
+- Fixed bug in compiler uploader
+- Changed "samples" to "examples" in command name "Show examples workspace"
+
 ## [1.0.2] - 2020-06-01
 ### Added
 - Two new images for extension help file
@@ -31,7 +39,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Basic SLang support for VSCode
 - Basic Help
 
-[Unreleased]: https://github.com/NothingIsGood/Semantic-Language-Extension/compare/v1.0.2...HEAD
+[Unreleased]: https://github.com/NothingIsGood/Semantic-Language-Extension/compare/v1.0.3...HEAD
+[1.0.3]: https://github.com/NothingIsGood/Semantic-Language-Extension/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/NothingIsGood/Semantic-Language-Extension/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/NothingIsGood/Semantic-Language-Extension/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/NothingIsGood/Semantic-Language-Extension/releases/tag/v1.0.0
