@@ -2,7 +2,7 @@
     "name": "semantic-language",
     "displayName": "SLangIDE (Semantic Language)",
     "description": "Semantic Language (SLang) support for VSCode",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "repository": {
         "type": "git",
         "url": "https://github.com/NothingIsGood/Semantic-Language-Extension.git"
@@ -86,7 +86,7 @@
             },
             {
                 "command": "ext.ShowSamples",
-                "title": "SL: Open examples workspace"
+                "title": "SL: Show examples workspace"
             },
             {
                 "command": "ext.ShowLangHelp",
