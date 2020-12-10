@@ -63,17 +63,17 @@
                 "numbers": {
                     "patterns": [
                         {
-							"name": "constant.numeric.decimal.semanticlanguage",
-							"match": "\\b[0-9_]+(e|E)[0-9_]\\b"
-						},
-						{
-							"name": "constant.numeric.decimal.semanticlanguage",
-							"match": "\\b([0-9_]+)?\\.[0-9_]+((e|E)[0-9]+)?\\b"
-						},
-						{
-							"name": "constant.numeric.decimal.semanticlanguage",
-							"match": "\\b[0-9_]\\b"
-						}
+                            "name": "constant.numeric.decimal.semanticlanguage",
+                            "match": "\\b[0-9_]+(e|E)[0-9_]\\b"
+                        },
+                        {
+                            "name": "constant.numeric.decimal.semanticlanguage",
+                            "match": "\\b([0-9_]+)?\\.[0-9_]+((e|E)[0-9]+)?\\b"
+                        },
+                        {
+                            "name": "constant.numeric.decimal.semanticlanguage",
+                            "match": "\\b[0-9_]\\b"
+                        }
                     ]
                 }
             }
@@ -87,17 +87,16 @@
             ]
         },
         "types": {
-			"patterns": [
-				{
-					"include": "#primitive"
-				},
-				{
-					"include": "#array"
-				}
-			],
-			"repository":
-			 {
-				"primitive": {
+            "patterns": [
+                {
+                    "include": "#primitive"
+                },
+                {
+                    "include": "#array"
+                }
+            ],
+            "repository": {
+                "primitive": {
                     "patterns": [
                         {
                             "match": "\\b(integer|real|boolean|character|class|pointer|string)\\b",
@@ -116,7 +115,7 @@
             }
         },
         "keywords": {
-            "patterns":  [
+            "patterns": [
                 {
                     "name": "keyword.control.semanticlanguage",
                     "match": "\\b(if|while|elseif|else|repeat|then|do)\\b"
@@ -168,16 +167,16 @@
                     }
                 },
                 {
-					"match": "(end)",
-					"captures": {
-						"1": {
-							"name": "keyword.other.import.semanticlanguage"
-						},
-						"2": {
-							"name": "entity.name.type.module.semanticlanguage"
-						}
-					}
-				}
+                    "match": "(end)",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.other.import.semanticlanguage"
+                        },
+                        "2": {
+                            "name": "entity.name.type.module.semanticlanguage"
+                        }
+                    }
+                }
             ]
         }
     },

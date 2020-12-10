@@ -1,8 +1,8 @@
 import * as path from "path";
 import * as vscode from "vscode";
 import { ExtensionContext } from "vscode";
-import * as extPath from "../utils/extPath"
-import { ConfigurationManager } from '../utils/configManager'
+import * as extPath from "../utils/extPath";
+import { ConfigurationManager } from '../utils/configManager';
 
 export class SlangBuildTaskProvider implements vscode.TaskProvider {
 
@@ -30,12 +30,12 @@ export function getBuildTask(context: ExtensionContext): vscode.Task[] | undefin
     if (vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders.length > 0)
     {
         let pathToProject: unknown | undefined = ConfigurationManager.getConfig(ConfigurationManager.activeProjectKey);
-        if (pathToProject == undefined)
+        if (pathToProject === undefined)
         {
             vscode.window.showErrorMessage("Error, start project is not set");
             return [];
         }
-        else if (typeof pathToProject == 'string')
+        else if (typeof pathToProject === 'string')
         {
             let pathToCompiler = extPath.getCompilerPath(context);
             let cPath = toStringQuotes(pathToCompiler);

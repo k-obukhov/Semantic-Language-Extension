@@ -1,7 +1,7 @@
 import * as path from "path";
 import * as vscode from "vscode";
 import { ExtensionContext } from "vscode";
-import { ConfigurationManager } from '../utils/configManager'
+import { ConfigurationManager } from '../utils/configManager';
 
 export class SlangLaunchTaskProvider implements vscode.TaskProvider
 {
@@ -24,12 +24,12 @@ function getLaunchTask(context: ExtensionContext): vscode.Task[] | undefined
     if (vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders.length > 0)
     {
         let pathToProject: unknown | undefined = ConfigurationManager.getConfig(ConfigurationManager.activeProjectKey);
-        if (pathToProject == undefined)
+        if (pathToProject === undefined)
         {
             vscode.window.showErrorMessage("Error, start project is not set");
             return [];
         }
-        else if (typeof(pathToProject) == 'string')
+        else if (typeof(pathToProject) === 'string')
         {
             const cli = path.normalize(path.join(pathToProject, "bin/program.out"));
             const definition : vscode.TaskDefinition = {

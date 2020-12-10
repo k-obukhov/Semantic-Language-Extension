@@ -31,13 +31,3 @@ export function getSamplesWorkspacePath(context: ExtensionContext)
 {
     return path.join(context.extensionPath, "bin", "Samples", "samples-workspace.code-workspace");
 }
-
-export function getTempDownloadsFolder(context: ExtensionContext)
-{
-    return path.join(context.extensionPath, "tmpdownloads");
-}
-
-export function getTempDownloadsPath(context: ExtensionContext, subPath: string)
-{
-    return path.join(getTempDownloadsFolder(context), subPath);
-}

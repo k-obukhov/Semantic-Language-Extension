@@ -1,19 +1,19 @@
 {
-    "Let":{
+    "Let": {
         "prefix": "let",
         "body": [
             "let ${1:variable} := ${2:expression};"
         ],
         "description": "Snippet for \"let...\""
     },
-    "Import":{
+    "Import": {
         "prefix": "import",
         "body": [
             "import ${1:module}"
         ],
         "description": "Snippet for \"import...\""
     },
-    "Module (Main) ":{
+    "Module (Main) ": {
         "prefix": "module",
         "body": [
             "module Main",
@@ -29,23 +29,21 @@
         ],
         "description": "Snippet fom \"not main module\""
     },
-    "Variable":{
+    "Variable": {
         "prefix": "variable",
         "body": [
             "variable ${1:type} ${2:name} := ${3:expr};"
         ],
         "description": "Snippet for \"variable...\""
     },
-
-    "Const":{
+    "Const": {
         "prefix": "const",
         "body": [
             "const ${1:type} ${2:name} := ${3:expr};"
         ],
         "description": "Snippet for \"const...\""
     },
-
-    "While Loop":{
+    "While Loop": {
         "prefix": "while",
         "body": [
             "while (${1:statement}) do",
@@ -54,7 +52,7 @@
         ],
         "description": "Snippet for loop \"while...\""
     },
-    "RepeatWhile Loop":{
+    "RepeatWhile Loop": {
         "prefix": "repeat",
         "body": [
             "repeat",
@@ -63,7 +61,7 @@
         ],
         "description": "Snippet for loop \"repeat...while...\""
     },
-    "Function":{
+    "Function": {
         "prefix": "function",
         "body": [
             "${1:access_modifier} function(): ${2:return_type} ${3:name}",
@@ -72,7 +70,7 @@
         ],
         "description": "Snippet for Function"
     },
-    "Procedure":{
+    "Procedure": {
         "prefix": "procedure",
         "body": [
             "${1:access_modifier} procedure() ${2:name}",
@@ -81,7 +79,7 @@
         ],
         "description": "Snippet for Procedure"
     },
-    "If-Else":{
+    "If-Else": {
         "prefix": "if else",
         "body": [
             "if (${1:statement}) then",
@@ -92,7 +90,7 @@
         ],
         "description": "Snippet for \"if...else...\""
     },
-    "If-ElseIf-Else":{
+    "If-ElseIf-Else": {
         "prefix": "if elseif else",
         "body": [
             "if (${1:statement}) then",
@@ -105,7 +103,7 @@
         ],
         "description": "Snippet for \"if... else if... else...\""
     },
-    "IfOnly":{
+    "IfOnly": {
         "prefix": "if",
         "body": [
             "if (${1:statement}) then",
@@ -114,7 +112,7 @@
         ],
         "description": "Snippet for \"if...\""
     },
-    "Array":{
+    "Array": {
         "prefix": "array",
         "body": [
             "array [${1:size}] ${2:type} ${3:name};"
@@ -129,16 +127,14 @@
         ],
         "description": "Snippet for Class"
     },
-    "Pointer":
-    {
+    "Pointer": {
         "prefix": "pointer",
         "body": [
             "pointer(${1:type}) ${2:name};"
         ],
         "description": "Snippet for Pointer declare"
     },
-    "Method-function":
-    {
+    "Method-function": {
         "prefix": "function",
         "body": [
             "${1:access_modifier} (${2:class_of_this} ${3:name}) function (): ${4:return_type} ${5:name}",
@@ -147,8 +143,7 @@
         ],
         "description": "Snippet for method-function"
     },
-    "Method-procedure":
-    {
+    "Method-procedure": {
         "prefix": "procedure",
         "body": [
             "${1:access_modifier} (${2:class_of_this} ${3:name}) procedure () ${4:name}",
@@ -157,8 +152,7 @@
         ],
         "description": "Snippet for procedure"
     },
-    "Method-function (Abstract)":
-    {
+    "Method-function (Abstract)": {
         "prefix": "function",
         "body": [
             "${1:access_modifier} abstract (${2:class_of_this} ${3:name}) function (): ${4:return_type} ${5:name}",
@@ -166,8 +160,7 @@
         ],
         "description": "Snippet for method-function (Abstract)"
     },
-    "Method-procedure (Abstract)":
-    {
+    "Method-procedure (Abstract)": {
         "prefix": "procedure",
         "body": [
             "${1:access_modifier} abstract (${2:class_of_this} ${3:name}) procedure () ${4:name}",
@@ -175,14 +168,14 @@
         ],
         "description": "Snippet for procedure (Abstract)"
     },
-    "Field-Variable (in module or class)":{
+    "Field-Variable (in module or class)": {
         "prefix": "variable",
         "body": [
             "${1:access_modifier} variable ${2:type} ${3:name} := ${4:expr};"
         ],
         "description": "Snippet for field-variable"
     },
-    "Field-Const (in module)":{
+    "Field-Const (in module)": {
         "prefix": "const",
         "body": [
             "${1:access_modifier} const ${2:type} ${3:name} := ${4:expr};"
