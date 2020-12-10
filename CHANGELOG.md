@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2020-12-10
+### Changed
+- Small refactoring in JSON files
+
+### Removed
+- Compiler downloader from the GitHub (All compiler patches will be in new extension versions)
+
 ## [1.0.4] - 2020-06-23
 ### Changed
 - Small fixes for command names in help file
@@ -43,7 +50,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Basic SLang support for VSCode
 - Basic Help
 
-[Unreleased]: https://github.com/NothingIsGood/Semantic-Language-Extension/compare/v1.0.4...HEAD
+[Unreleased]: https://github.com/NothingIsGood/Semantic-Language-Extension/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/NothingIsGood/Semantic-Language-Extension/compare/v1.0.4...v1.1.0
 [1.0.4]: https://github.com/NothingIsGood/Semantic-Language-Extension/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/NothingIsGood/Semantic-Language-Extension/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/NothingIsGood/Semantic-Language-Extension/compare/v1.0.1...v1.0.2

@@ -7,8 +7,7 @@ import { ConfigurationManager } from '../utils/configManager';
 export class SlangBuildTaskProvider implements vscode.TaskProvider {
 
     private context: ExtensionContext;
-    constructor (extContext: ExtensionContext)
-    {
+    constructor(extContext: ExtensionContext) {
         this.context = extContext;
     }
 
@@ -20,23 +19,18 @@ export class SlangBuildTaskProvider implements vscode.TaskProvider {
     }
 }
 
-function toStringQuotes(value: string)
-{
+function toStringQuotes(value: string) {
     return `\"${value}\"`;
 }
 
-export function getBuildTask(context: ExtensionContext): vscode.Task[] | undefined
-{
-    if (vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders.length > 0)
-    {
+export function getBuildTask(context: ExtensionContext): vscode.Task[] | undefined {
+    if (vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders.length > 0) {
         let pathToProject: unknown | undefined = ConfigurationManager.getConfig(ConfigurationManager.activeProjectKey);
-        if (pathToProject === undefined)
-        {
+        if (pathToProject === undefined) {
             vscode.window.showErrorMessage("Error, start project is not set");
             return [];
         }
-        else if (typeof pathToProject === 'string')
-        {
+        else if (typeof pathToProject === 'string') {
             let pathToCompiler = extPath.getCompilerPath(context);
             let cPath = toStringQuotes(pathToCompiler);
             let inPath = toStringQuotes(pathToProject);
@@ -51,15 +45,15 @@ export function getBuildTask(context: ExtensionContext): vscode.Task[] | undefin
                 `-l`, `${langTag}`,
                 `-p`, `${prPath}`
             ];
-    
+
             const cli = "dotnet";
-            const exec = new vscode.ShellExecution(cli, args, {cwd: pathToProject});
-    
-            const definition : vscode.TaskDefinition = {
+            const exec = new vscode.ShellExecution(cli, args, { cwd: pathToProject });
+
+            const definition: vscode.TaskDefinition = {
                 type: "shell",
                 label: "SL: Build"
             };
-    
+
             const buildTask = new vscode.Task(definition, vscode.TaskScope.Workspace, "Build", "Slang", exec, "$slang");
             buildTask.group = vscode.TaskGroup.Build;
             buildTask.presentationOptions = {
@@ -68,12 +62,11 @@ export function getBuildTask(context: ExtensionContext): vscode.Task[] | undefin
                 panel: vscode.TaskPanelKind.Dedicated,
                 reveal: vscode.TaskRevealKind.Always
             };
-                
+
             return [buildTask];
         }
     }
-    else
-    {
+    else {
         vscode.window.showErrorMessage("There is no workspace folders");
     }
 }
